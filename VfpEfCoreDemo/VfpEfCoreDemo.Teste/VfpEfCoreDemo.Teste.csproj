@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VfpEfCore\VfpEfCore.csproj" />
+    <ProjectReference Include="..\VfpEfCoreDemo\VfpEfCoreDemo.csproj" />
   </ItemGroup>
 
 </Project>
