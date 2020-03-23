@@ -9,13 +9,9 @@ namespace VfpEfCoreDemo
         public DbSet<Employee> Employees { get; set; }
         /*protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            string path = System.Environment.CurrentDirectory.ToString() + "\\..\\..\\..\\";
-            options.UseSqlite($"Data Source={path}sqlitedemo.db");
+            string path = System.Environment.CurrentDirectory.ToString();
+            options.UseVfp($"Data Source={path}\\Sinca.dbc");
         } */
-        public VfpDBContext()
-            : base(new VfpConnection(@"D:\GitHub\dados\SincaTeste.dbc"), true)
-        {
-        }
 
         public VfpDBContext(string cs)
             : base(new VfpConnection(cs), true)
