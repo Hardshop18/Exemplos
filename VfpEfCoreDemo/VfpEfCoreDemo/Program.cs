@@ -7,8 +7,8 @@ namespace VfpEfCoreDemo
     {
         static void Main(string[] args)
         {
-            string path = System.Environment.CurrentDirectory.ToString();
-            using (var db = new VfpDBContext($"{path}\\Sinca.dbc"))
+            //string path = System.Environment.CurrentDirectory.ToString();
+            using (var db = new VfpDBContext()//$"{path}\\Sinca.dbc"))
             {
                 // Create
                 Console.WriteLine("Add New Employee: ");

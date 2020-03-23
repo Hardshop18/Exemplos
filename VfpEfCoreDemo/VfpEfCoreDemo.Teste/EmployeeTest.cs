@@ -9,8 +9,8 @@ namespace VfpEfCoreDemo.Teste
         VfpDBContext db;
         public EmployeeTest()
         {
-            string path = System.Environment.CurrentDirectory.ToString();
-            db = new VfpDBContext($"{path}\\Sinca.dbc");
+            //string path = System.Environment.CurrentDirectory.ToString();
+            db = new VfpDBContext();//$"{path}\\Sinca.dbc");
         }
 
         private void CreateEmployee(string Name)
