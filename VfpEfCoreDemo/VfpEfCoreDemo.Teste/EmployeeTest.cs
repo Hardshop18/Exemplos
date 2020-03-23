@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using VfpEfCore;
 using Xunit;
 
 namespace VfpEfCoreDemo.Teste
@@ -9,8 +10,9 @@ namespace VfpEfCoreDemo.Teste
         VfpDBContext db;
         public EmployeeTest()
         {
-            //string path = System.Environment.CurrentDirectory.ToString();
-            db = new VfpDBContext();//$"{path}\\Sinca.dbc");
+            string path = System.Environment.CurrentDirectory.ToString();
+            db = new VfpDBContext($"{path}\\Sinca.dbc");
+            //db = new VfpDBContext();
         }
 
         private void CreateEmployee(string Name)
