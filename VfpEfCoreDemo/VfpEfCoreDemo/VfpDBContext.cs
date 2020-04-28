@@ -1,21 +1,21 @@
-﻿using System.Data.Entity;
-using VfpEntityFrameworkProvider;
+﻿
+using Microsoft.EntityFrameworkCore;
 
 namespace VfpEfCoreDemo
 {
-    [DbConfigurationType(typeof(VfpDbConfiguration))]
     public class VfpDBContext : DbContext
     {
+        private readonly string _connectionString;
         public DbSet<Employee> Employees { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            string path = System.Environment.CurrentDirectory.ToString();
-            options.UseVfp($"Data Source={path}\\Sinca.dbc");
+            options.UseVfp(_connectionString); 
         }
 
-        /*public VfpDBContext(string cs)
-            : base(new VfpConnection(cs), true)
+        public VfpDBContext(string connectionString)
+            : base()
         {
-        }*/
+            _connectionString = connectionString;
+        }
     }
 }

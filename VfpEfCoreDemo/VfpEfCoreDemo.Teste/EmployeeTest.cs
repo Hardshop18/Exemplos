@@ -1,10 +1,9 @@
-using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
-using VfpEfCore;
-using Xunit;
 
 namespace VfpEfCoreDemo.Teste
 {
+    [TestClass]
     public class EmployeeTest
     {
         VfpDBContext db;
@@ -12,14 +11,13 @@ namespace VfpEfCoreDemo.Teste
         {
             string path = System.Environment.CurrentDirectory.ToString();
             db = new VfpDBContext($"{path}\\Sinca.dbc");
-            //db = new VfpDBContext();
         }
 
         private void CreateEmployee(string Name)
         {
             // Create
             db.Employees.Add(new Employee { FirstName = Name, LastName = "Doe", Age = 55 });
-            db.SaveChanges();
+            db.SaveChanges(true);
         }
 
         private Employee GetEmployee()
@@ -42,7 +40,8 @@ namespace VfpEfCoreDemo.Teste
             db.SaveChanges();
         }
 
-        [Fact]
+        [TestMethod]
+        //[Fact]
         public void Create()
         {
             string Name = "John";
@@ -51,12 +50,13 @@ namespace VfpEfCoreDemo.Teste
             // Read
             var employee = GetEmployee();
 
-            Assert.Equal(employee.FirstName, Name);
+            Assert.AreEqual(employee.FirstName, Name);
 
             DeleteEmployee(employee);
         }
 
-        [Fact]
+        [TestMethod]
+        //[Fact]
         public void Update()
         {
             string Name = "Louis";
@@ -73,13 +73,14 @@ namespace VfpEfCoreDemo.Teste
             // Read
             employee = GetEmployee();
 
-            Assert.Equal(employee.FirstName, Name);
+            Assert.AreEqual(employee.FirstName, Name);
 
             // Delete
             DeleteEmployee(employee);
         }
-
-        [Fact]
+        
+        [TestMethod]
+        //[Fact]
         public void Delete()
         {
             // Create
@@ -90,7 +91,7 @@ namespace VfpEfCoreDemo.Teste
             DeleteEmployee(employee);
 
             employee = GetEmployee();
-            Assert.Null(employee);
+            Assert.IsNull(employee);
         }
     }
 }
