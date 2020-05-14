@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7C0D6D91-32FB-425E-BD80-4D814615359E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SyncWooCommerce</RootNamespace>
+    <AssemblyName>SyncWooCommerce</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VfpClient, Version=1.0.1.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\VfpClient.1.0.1-beta\lib\net461\VfpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="VfpEntityFrameworkProvider, Version=3.0.2.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\VfpEntityFrameworkProvider2.3.0.2-beta\lib\net461\VfpEntityFrameworkProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="WooCommerce.NET, Version=0.8.2.0, Culture=neutral, PublicKeyToken=ff41d0b6c937438d, processorArchitecture=MSIL">
+      <HintPath>..\packages\WooCommerceNET.0.8.2\lib\netstandard2.0\WooCommerce.NET.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EfRepository\GenericEfRepository.cs" />
+    <Compile Include="Ef\ContextDB.cs" />
+    <Compile Include="Ef\GetEntityConnectionString.cs" />
+    <Compile Include="Interface\IEmailServices.cs" />
+    <Compile Include="Interface\IFtpServices.cs" />
+    <Compile Include="Interface\IGenericEfRepository.cs" />
+    <Compile Include="Interface\IWcCategoryRepository.cs" />
+    <Compile Include="Interface\IFerramentaServices.cs" />
+    <Compile Include="Interface\IWcOrdersRepository.cs" />
+    <Compile Include="Interface\IWcProductRepository.cs" />
+    <Compile Include="Interface\IWcServices.cs" />
+    <Compile Include="Interface\IWcVariantRepository.cs" />
+    <Compile Include="Models\Dimensao.cs" />
+    <Compile Include="Models\Estoque.cs" />
+    <Compile Include="Models\Foto.cs" />
+    <Compile Include="Models\Grupopro.cs" />
+    <Compile Include="Models\Integracao.cs" />
+    <Compile Include="Models\ItemDimensao.cs" />
+    <Compile Include="Models\ItemFotoProduto.cs" />
+    <Compile Include="Models\Produto.cs" />
+    <Compile Include="Models\Sincronizacao.cs" />
+    <Compile Include="Models\Supergrupopro.cs" />
+    <Compile Include="Models\TabelaSincronizavel.cs" />
+    <Compile Include="Models\Timestamp.cs" />
+    <Compile Include="Models\Vinculo.cs" />
+    <Compile Include="Objetos\Resposta.cs" />
+    <Compile Include="Objetos\Configuracao.cs" />
+    <Compile Include="Services\EmailServices.cs" />
+    <Compile Include="Services\FerramentaServices.cs" />
+    <Compile Include="Services\FtpServices.cs" />
+    <Compile Include="Services\ProductServices.cs" />
+    <Compile Include="Services\WcServices.cs" />
+    <Compile Include="Utilitarios\ArquivoDeConfiguracao.cs" />
+    <Compile Include="Utilitarios\Log.cs" />
+    <Compile Include="WcRepository\WcCategoryRepository.cs" />
+    <Compile Include="WcRepository\WcOrdersRepository.cs" />
+    <Compile Include="WcRepository\WcProductRepository.cs" />
+    <Compile Include="WcRepository\WcVariantRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+</Project>
